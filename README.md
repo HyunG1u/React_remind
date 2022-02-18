@@ -86,6 +86,8 @@ Props는 부모 컴포넌트로부터 자식 컴포넌트에 데이터를 보낼
 
 리액트 컴포넌트의 onClick은 이벤트리스너가 아닌 props이다.
 
+props는 object일 뿐이고 그걸 열어서 item을 꺼내 쓰는 것이다.
+
 props가 useState에 의해 값이 바뀌어 re-render될 때 바뀌지 않은 컴포넌트까지 re-render될 필요는 없다.
 
 → React.memo를 이용하면 props가 바뀌지 않은 컴포넌트는 re-render되지 않는다.
@@ -151,3 +153,55 @@ useEffect의 두번째 argument
 return 안에 js 코드를 쓰고 싶으면 { }이용
 
 cleanup: useEffect로 함수의 생성과 소멸을 알 수 도 있다. useEffect안의 return을 이용하여
+
+state를 변경할 시 state를 직접 변경하지 않는다. useState를 이용한다.
+
+state가 배열일 때 새로운 값을 추가하고 싶을때
+
+→ setArray((array) ⇒ [new value, ...array])
+
+map함수( map((item,index) ⇒ ...)
+
+map 함수의 첫번째 argument가 진행되고 있는 순서에 맞는 item이다.
+
+index는 item에 숫자를 부여해줌(순서)
+
+**React Router**: 페이지를 전환 해주는 것
+
+Router에는 Hash Router 와 Browser Router가 있다.
+
+Browser Router에서 URL은 보통의 웹사이트처럼 생김
+
+Hash Router에서 URL은 /#/이 앞에 추가된다.
+
+보통 Browser Router 사용
+
+Swtich는 Route(URL)를 찾는 일을 한다. 그리고 Route를 찾으면 컴포넌트를 rendering한다.
+
+**react-router-dom**
+
+Router를 먼저 rendering해주고 그 안에는 우리가 보여주고 싶은것이 들어간다.
+
+Switch를 사용하는 이유는 한번에 하나의 Route만 rendering하기 위해서이다.
+
+React Router에서는 두개의 Route를 한번에 rendering할 수 있기 때문
+
+Route는 path의 앞부분 부터 일치하는 부분이 있으면 그걸로 OK한다.
+
+즉, "/ " 는 "/movie" 의 부분집합 이므로 "/"가 앞쪽에 있으면 "/movie"로 못 넘어간다.
+
+그럼에도 불구하고 앞쪽에다 하는걸 원한다면
+
+`Route exact path="/"` 처럼 중간에 exact를 넣으면 완전일치로 판정이 바뀌므로 순서에 상관없이 잘 된다.
+
+Link는 브라우저 새로고침 없이도 다른 페이지로 이동시켜주는 컴포넌트
+
+url/:id를 이용하면 변수에 따라 다른 경로로 보낼 수 있다.
+
+useParams: url에 있는 값(특히 변경되는 값) 을 반환해주는 함수
+
+const x= useParams();
+
+await는 async 함수 내부에 있지 않으면 사용할 수 없다.
+
+gh-pages: 프로젝트를 github에 업로드할 수 있음(deploy)
